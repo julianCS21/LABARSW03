@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,31 +33,21 @@ public class Producer extends Thread {
     public void run() {
         while (true) {
             synchronized (queue) {
-                if(queue.size() > stockLimit){
-                    try {
-                        queue.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                else{
+                if(queue.size() == 0 || queue.size() < stockLimit){
+                    queue.notify();
                     dataSeed = dataSeed + rand.nextInt(100);
                     System.out.println("Producer added " + dataSeed);
                     queue.add(dataSeed);
                 }
+                else{
+                    try {
+                        queue.wait();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-                if(queue.size() == stockLimit){
-                    queue.notify();
                 }
-
             }
-            
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
         }
     }
 }

@@ -23,16 +23,11 @@ public class StartProduction {
         Queue<Integer> queue=new LinkedBlockingQueue<>();
         
         
-        new Producer(queue,5).start();
+        new Producer(queue,10).start();
         
         //let the producer create products for 5 seconds (stock).
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(StartProduction.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        new Consumer(queue,5).start();
+        new Consumer(queue).start();
     }
     
 

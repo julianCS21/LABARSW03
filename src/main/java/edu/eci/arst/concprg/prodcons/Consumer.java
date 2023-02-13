@@ -12,42 +12,29 @@ import java.util.Queue;
  * @author hcadavid
  */
 public class Consumer extends Thread{
-    
+
     private Queue<Integer> queue;
 
-    private long size;
-    
-    
+
     public Consumer(Queue<Integer> queue){
-
         this.queue=queue;
     }
 
-    public Consumer(Queue<Integer> queue,long size){
-        this.queue=queue;
-        this.size = size;
-    }
-    
     @Override
     public void run() {
         while (true) {
             synchronized (queue) {
-                if (queue.size() == size) {
+                if (queue.size() > 0) {
                     queue.notify();
-                    for(int i = 0; i < queue.size();i++){
-                        int elem = queue.poll();
-                        System.out.println("Consumer consumes " + elem);
-                    }
-
+                    int elem = queue.poll();
+                    System.out.println("Consumer consumes " + elem);
                 } else {
                     try {
                         queue.wait();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-
                 }
-
             }
         }
     }

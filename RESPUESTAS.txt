@@ -1,0 +1,5 @@
+1. La clase que consume mas la CPU es Consumer, ya  que a pesar de tener una estructura similar a la de Producer, Consumer no tiene esa linea de codigo .sleep si no ejecuta siempre y cuando la cola tenga almenos un elemento, en cambio el productor espera para poder llenar la cola.
+El consumo se debe a que la CPU ejecuta la secuencia de instrucciones y procesa los datos de las mismas.
+
+
+2.
