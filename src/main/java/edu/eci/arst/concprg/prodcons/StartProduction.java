@@ -27,7 +27,7 @@ public class StartProduction {
         
         //let the producer create products for 5 seconds (stock).
 
-        new Consumer(queue).start();
+        new Consumer(queue,10).start();
     }
     
 

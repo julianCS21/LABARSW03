@@ -15,22 +15,32 @@ public class Consumer extends Thread{
 
     private Queue<Integer> queue;
 
+    private int limit;
+
 
     public Consumer(Queue<Integer> queue){
         this.queue=queue;
+    }
+
+    public Consumer(Queue<Integer> queue, int limit){
+        this.queue=queue;
+        this.limit = limit;
     }
 
     @Override
     public void run() {
         while (true) {
             synchronized (queue) {
-                if (queue.size() > 0) {
+                if (queue.size() == limit) {
                     queue.notify();
                     int elem = queue.poll();
                     System.out.println("Consumer consumes " + elem);
-                } else {
+                }
+                else {
                     try {
-                        queue.wait();
+                        if(queue.size() == 0){
+                            queue.wait();
+                        }
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
