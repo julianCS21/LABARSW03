@@ -2,4 +2,15 @@
 El consumo se debe a que la CPU ejecuta la secuencia de instrucciones y procesa los datos de las mismas.
 
 
-2.
+
+2. inmortals
+
+
+2. El invariante seria la sumatoria total de la vida de todos los inmortales presentes al principio del juego.
+
+3. Lo que hace el botón es dar información de la vida que tienen los inmortales en ese preciso momento y la sumatoria de las vidas en ese instante, por lo tanto no seria un invariante.
+
+
+5. Aun no se cumple la condicion de invariante, varia con el tiempo.
+
+9. La estrategia implementada fue añadir un atributo a los inmortales y es un id, si es menor, es decir entro primero o se creo primero durante el transcurso del juego, tiene privilegio a la hora de pelear, su vida no se vera afectada.
