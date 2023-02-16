@@ -13,4 +13,6 @@ El consumo se debe a que la CPU ejecuta la secuencia de instrucciones y procesa 
 
 5. Aun no se cumple la condicion de invariante, varia con el tiempo.
 
-9. La estrategia implementada fue añadir un atributo a los inmortales y es un id, si es menor, es decir entro primero o se creo primero durante el transcurso del juego, tiene privilegio a la hora de pelear, su vida no se vera afectada.
+8. La estrategia implementada fue añadir un atributo a los inmortales y es un id, si es menor, es decir entro primero o se creo primero durante el transcurso del juego, tiene privilegio a la hora de pelear, su vida no se vera afectada.
+
+9. la estrategia funciono sin embargo con numeros tan grandes no es recomendado para el pc, puede entorpecer durante la ejecucion del proceso.
